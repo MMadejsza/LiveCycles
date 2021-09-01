@@ -8,27 +8,28 @@ class App extends Component {
     this.state = {
       comments: [],
     }
-
   }
 
   componentDidMount() {
     fetch("https://jsonplaceholder.typicode.com/comments")
-      .then(res => res.json())
-      .then(res => {
+      .then((res) => res.json())
+      .then((res) => {
+        const response = res.filter(singleComment => singleComment.id <= 10)
         this.setState({
-          comments: res.filter(singleComment => singleComment.id <= 10)
+          comments: [...response],
         })
       })
-
-    console.log(this.state);
-
   }
 
   render() {
+    const commentsGroup = this.state.comments;
     return (
-      <div className="container">
-        <ol>
-          { }
+      <div className='containerup'>
+        <ol className="container">
+          {commentsGroup.map(eachComment => {
+            return <li key={eachComment.id} className='singleComment'>
+              {eachComment.body}</li>
+          })}
         </ol>
 
       </div>
