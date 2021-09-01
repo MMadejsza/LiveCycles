@@ -24,7 +24,7 @@ class App extends Component {
 
   deleteComment = () => {
     this.setState({
-      comments: this.prevState.comments.pop(),
+      comments: this.prevState.comments.shift(),
       prevComments: this.prevState.comments
     })
     console.log(this.state)
