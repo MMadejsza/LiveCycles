@@ -20,15 +20,15 @@ class App extends Component {
           prevComments: ''
         })
       })
+    deleteComment = () => {
+      this.setState({
+        comments: this.prevState.comments.shift(), // react wyrzuca błąd, że comments ze state jest undefined i nie wiem dlaczego. próbowałem też wrzucić funkcję do componentDidMount bezskutecznie jako że cała fukncja jest undefined
+        prevComments: this.prevState.comments
+      })
+      console.log(this.state)
+    }
   }
 
-  deleteComment = () => {
-    this.setState({
-      comments: this.prevState.comments.shift(),
-      prevComments: this.prevState.comments
-    })
-    console.log(this.state)
-  }
 
   render() {
     const commentsGroup = this.state.comments;
